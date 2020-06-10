@@ -9,44 +9,6 @@
 #include "HeaderFiles/Triangle.hpp"
 #include "HeaderFiles/Slope.hpp"
 
-//Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
-
-// Initialises window and surface which initialises a window that is shown to the user and
-// the image that will be inserted into the window
-auto init()
-{
-    SDL_Window* window = NULL;
-    SDL_Surface* surface = NULL;
-
-    // Initialize SDL
-    if (SDL_Init(SDL_INIT_VIDEO) < 0)
-    {
-        printf("SDL count not initialize! SDL_Error: %s\n", SDL_GetError());
-    }
-    else 
-    {
-        // Create window
-        window = SDL_CreateWindow("SDL tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-        if (window == NULL)
-        {
-            printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
-        }
-        else 
-        {
-            surface = SDL_GetWindowSurface(window);
-        }
-
-    }
-
-    struct RetValue {
-        SDL_Window* window;
-        SDL_Surface* surface;
-    };
-
-    return RetValue {window, surface};
-}
 
 // Takes a slope object and draws it
 void drawSlope(Slope* slope, SDL_Renderer* renderer)
@@ -261,65 +223,9 @@ int main()
     SDL_Quit();
 
     }
-    
-    // auto [window, winSurface] = init();
-    // if (window == NULL || winSurface == NULL)
-    // {
-    //     printf("Window and surface initialization failed\n");
-    //     return 1;
-    // }
-    // SDL_Surface* image = loadMedia();
-    // if (image == NULL) {
-    //     printf("Bitmap image initialization failed\n");
-    //     return 1;
-    // }
-    // else
-    // {
-    //     // Keeps window open until user presses the x
-    //     bool quit = false;
-    //     SDL_Event e;
-    //     while(!quit)
-    //     {
-    //         // Draw image
-    //         SDL_BlitSurface(image, NULL, winSurface, NULL);
-    //         SDL_UpdateWindowSurface(window);
-    //         while (SDL_PollEvent(&e) != 0)
-    //         {
-    //             if (e.type == SDL_QUIT)
-    //             {
-    //                 quit = true;
-    //             }
-    //         }
-    //     }
-    // }
-    // close(window, image);
     return 0; 
 }
 
-void close(SDL_Window* window, SDL_Surface* image)
-{
-    // Deallocate surface
-    SDL_FreeSurface(image);
-    image = NULL;
-
-    SDL_DestroyWindow(window);
-    window = NULL;
-    SDL_Quit();
-}
-
-// Loads a .bmp image
-SDL_Surface* loadMedia()
-{
-
-    // Load image
-    SDL_Surface* image = SDL_LoadBMP("./tiger.bmp");
-    if (image == NULL)
-    {
-        printf("Failed to load .bmp image");
-    }
-
-    return image;
-}
 
 
 
