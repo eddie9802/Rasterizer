@@ -4,7 +4,7 @@ CC = g++
 
 OBJ_NAME = ./out/program
 
-LINKERFLAGS = -lSDL2 `sdl-config --libs` -lSDL2_image
+LINKERFLAGS = -lSDL2
 
 COMPILERFLAGS = -std=c++17 -g
 
