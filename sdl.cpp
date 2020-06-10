@@ -193,15 +193,15 @@ void fillTriangle(Triangle* tri, SDL_Renderer* renderer)
         // Finds the point that has a y coordinate that lies between the other points
         Point* allPoints[3] = {tri->allSlopes[0]->p1, tri->allSlopes[1]->p1, tri->allSlopes[2]->p1};
         Point* middlePoint = NULL;
-        if (allPoints[0]->x < allPoints[1]->x && allPoints[0]->x > allPoints[2]->x || allPoints[0]->x > allPoints[1]->x && allPoints[0]->x < allPoints[2]->x)
+        if (allPoints[0]->y < allPoints[1]->y && allPoints[0]->y > allPoints[2]->y || allPoints[0]->y > allPoints[1]->y && allPoints[0]->y < allPoints[2]->y)
         {
             middlePoint = allPoints[0];
         }
-        else if (allPoints[1]->x < allPoints[0]->x && allPoints[1]->x > allPoints[2]->x || allPoints[1]->x > allPoints[0]->x && allPoints[1]->x < allPoints[2]->x)
+        else if (allPoints[1]->y < allPoints[0]->y && allPoints[1]->y > allPoints[2]->y || allPoints[1]->y > allPoints[0]->y && allPoints[1]->y < allPoints[2]->y)
         {
             middlePoint = allPoints[1];
         }
-        else if (allPoints[2]->x < allPoints[0]->x && allPoints[2]->x > allPoints[1]->x || allPoints[2]->x > allPoints[0]->x && allPoints[2]->x < allPoints[1]->x)
+        else if (allPoints[2]->y < allPoints[0]->y && allPoints[2]->y > allPoints[1]->y || allPoints[2]->y > allPoints[0]->y && allPoints[2]->y < allPoints[1]->y)
         {
             middlePoint = allPoints[2];
         }
@@ -288,7 +288,6 @@ void fillTriangle(Triangle* tri, SDL_Renderer* renderer)
                 if (i == 0)
                 {
                     nonBendMidX = slopeHighPoint->x + (slopeLowPoint->x - slopeHighPoint->x) * (middlePoint->y - slopeHighPoint->y) / (slopeLowPoint->y - slopeHighPoint->y);
-                    printf("%d\n", nonBendMidX);
                 }
 
                 // for (int y = slopeHighPoint->y; y < slopeLowPoint->y; y++)
